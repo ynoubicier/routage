@@ -1,0 +1,37 @@
+<form
+ action="" 
+ class="form-container"
+ #contactForm="ngForm"
+ (ngSubmit)="onSubmit(contactForm)"
+>
+    <input
+     placeholder="Nom complet" 
+     type="text" 
+     name="fullname" 
+     required 
+     [(ngModel)]="formData.fullname"
+    />
+    <input placeholder="Votre email"
+     type="email" 
+     name="email" 
+     required 
+     [(ngModel)]="formData.email"
+    />
+    <textarea
+     placeholder="Votre message" 
+     name="message" 
+     cols="30" 
+     rows="5" 
+     required 
+     [(ngModel)]="formData.message"
+    ></textarea>
+    <div align="end">
+        <button
+         type="submit" 
+         [disabled]="contactForm.invalid"
+         [class.invalid-form-btn]="contactForm.invalid"
+         >
+         Soumettre
+        </button>
+    </div>
+</form>

@@ -1,0 +1,24 @@
+.form-container {
+    max-width: 720px;
+    margin: auto;
+    
+    input, textarea {
+        width: 100%;
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+    }
+
+    .invalid-form-btn {
+        background: grey;
+        opacity: 0.5
+    }
+
+    input:user-valid, textarea:user-valid {
+        border-color: green;
+    }
+
+    input:user-invalid, textarea:user-invalid {
+        border-color: red;
+    }
+}
