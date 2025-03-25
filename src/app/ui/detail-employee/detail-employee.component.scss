@@ -1,0 +1,14 @@
+.employee-container {
+    max-width: 1200px;
+    margin: 1rem auto;
+
+    .actions {
+        justify-content: end;
+        display: flex;
+        gap: 1rem;
+
+        .delete-btn {
+            background: red;
+        }
+    }
+}

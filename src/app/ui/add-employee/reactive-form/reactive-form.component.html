@@ -1,0 +1,111 @@
+<form [formGroup]="employeeForm" class="form-container" (ngSubmit)="onSubmit()">
+    @let controls = employeeForm.controls;
+    <h3>Identité</h3>
+    <input placeholder="Votre nom complet" type="text" formControlName="fullName">
+    @if (controls.fullName.hasError('required') && 
+    controls.fullName.touched) {
+        <span class="form-error">Les noms sont obligatoires</span>
+    }
+    <input placeholder="Votre adresse mail" type="email" formControlName="email">
+    @if (controls.email.hasError('required') && 
+    controls.email.touched) {
+        <span class="form-error">Email est obligatoire</span>
+    }
+    @if (!controls.email.hasError('required') && 
+    controls.email.hasError('email')) {
+        <span class="form-error">Email erroné</span>
+    }
+    @if (!controls.email.hasError('required') && 
+    !controls.email.hasError('email') && 
+    controls.email.hasError('pattern')) {
+        <span class="form-error">Format incorrect</span>
+    }
+    <input placeholder="Votre numéro de téléphone" type="text" formControlName="phone">
+    @if (controls.phone.hasError('required') && controls.phone.touched)
+    {
+        <span class="form-error">Le numéro de téléphone est obligatoire</span>
+    }
+    @if (!controls.phone.hasError('required') &&
+     controls.phone.hasError('minlength') ||
+     !controls.phone.hasError('required') &&
+     controls.phone.hasError('maxlength')
+    )
+    {
+        <span class="form-error">Le numéro est erroné</span>
+    }@else if (controls.phone.hasError('pattern'))
+    {
+        <span class="form-error">Le numéro est invalide</span>
+    }
+    <select formControlName="sexe">
+        <option value="">Selectionnez votre sexe</option>
+        <option value="M">Masculin</option>
+        <option value="F">Féminin</option>
+    </select>
+    @if (controls.sexe.hasError('required') &&
+     controls.sexe.touched)
+    {
+        <span class="form-error">Veuillez choisir votre sexe</span>
+    }
+
+    <hr>
+    <div [formGroup]="employeeForm.controls.address">
+        @let addressControls = employeeForm.controls.address.controls;
+        <h4>Adresse :</h4>
+        <input placeholder="Votre rue" type="text" formControlName="street" />
+        @if (addressControls.street.hasError('required') &&
+        addressControls.street.touched 
+        )
+        {
+            <span class="form-error">Veuillez entrer votre rue</span>
+        }
+        <input placeholder="Votre ville" type="text" formControlName="city" />
+        @if (addressControls.city.hasError('required') &&
+        addressControls.city.touched 
+        )
+        {
+            <span class="form-error">Veuillez entrer votre ville</span>
+        }
+        <input placeholder="Votre région" type="text" formControlName="state" />
+        <input placeholder="Votre pays" type="text" formControlName="country" />
+        @if (addressControls.country.hasError('required') &&
+        addressControls.country.touched
+        )
+        {
+            <span class="form-error">Veuillez entrer votre pays</span>
+        }
+    </div>
+
+    <hr>
+    <div formArrayName="hobbies">
+        <h4>Loisirs</h4>
+        @for (hobbyForm of employeeForm.controls.hobbies.controls; track $index)
+        {
+            <div class="hobby-container">
+                <input placeholder="Ex: chant, lecture, course à pied, enseignement" type="text" [formControlName]="$index" />
+            
+                @if (hobbyForm.hasError('required') &&
+                hobbyForm.touched 
+                )
+                {
+                    <span class="form-error">Ce champ est obligatoire</span>
+                }
+                @if ($index) {
+                <button
+                 class="remove-hobby-btn" 
+                 (click)="removeHobbyForm($index)"
+                 type="button"
+                >
+                    - Retirer
+                </button>
+                }
+            </div>
+        }
+        <button (click)="addHobbyForm()" type="button">
+            + Ajouter
+        </button>
+    </div>
+    <hr>
+    <div align="end">
+        <button type="submit">Soumettre</button>
+    </div>
+</form>

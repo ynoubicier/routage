@@ -1,5 +1,3 @@
-<header class="toolbar navigation-back">
-    <button routerLink="/"><</button>
-    <h2>Nouvel employé</h2>
-</header>
-<app-template-driven-form/>
+<!-- <app-template-driven-form/> -->
+<app-navigation-back-toolbar [toolbarTitle]="fullName === undefined ? 'Nouvel employé' : 'Modifier' + fullName" />
+<app-reactive-form/>

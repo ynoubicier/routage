@@ -1,0 +1,32 @@
+.form-container {
+    max-width: 720px;
+    margin: auto;
+
+    input, select {
+        width: 100%;
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        padding: 0.5rem
+    }
+
+    .form-error {
+        color: red;
+    }
+
+    .hobby-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        input{
+            width: 80%;
+        }
+
+        span {
+            width: 15%;
+        }
+        .remove-hobby-btn{
+            background: red;
+            height: 35px;
+        }
+    }
+}

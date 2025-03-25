@@ -7,4 +7,32 @@ main {
         justify-content: space-between;
         align-items: center;
     }
+
+    .employee-card {
+        border: 1px solid grey;
+        padding-left: 1rem;
+        text-decoration: none;
+        display: block;
+        color: inherit;
+        border-radius: 8px;
+        transition: 250ms ease-in-out;
+
+        &:hover {
+            scale: 0.98;
+        }
+    }
+
+    /* employees-container {
+        border: 1px solid grey;
+        padding-left: 1rem;
+        text-decoration: none;
+        display: block;
+        color: inherit;
+        border-radius: 8px;
+        transition: 250ms ease-in-out;
+
+        &:hover {
+            scale: 0.98;
+        }
+    } */
 }

@@ -1,1 +1,11 @@
-<p>detail-employee works!</p>
+<app-navigation-back-toolbar
+ [toolbarTitle]="employee ? employee.fullName : ''" 
+/>
+<div class="employee-container">
+    <app-employee-info [employee]="employee" />
+    <hr>
+    <div class="actions">
+        <button (click)="onEditEmployee(id(), employee)">Modifier</button>
+        <button class="delete-btn" (click)="onDeleteEmployee(id())">Supprimer</button>
+    </div>
+</div>

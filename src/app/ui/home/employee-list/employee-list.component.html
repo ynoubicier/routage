@@ -3,4 +3,18 @@
         <h3>Mes employés</h3>
         <button routerLink="/add-employee">Nouvel employé</button>
     </header>
+
+    <div class="employees-container">
+        @for (employee of employees; track $index) {
+            <a class="employee-card" [routerLink]="'/employee/' + $index">
+                <app-employee-info [employee]="employee" />
+            </a>
+            <br>
+        }@empty {
+            <p align="center">
+                Oups! Pas encore d'employé à afficher <br>
+                Commencer par ajouter un employé
+            </p>
+        }
+    </div>
 </main>
